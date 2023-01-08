@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 function Note(props) {
 
-    const [showDesc, setsShowDesc] = useState(false);
+    const arr = props.when.split("/");
 
-    const toggleDesc = () => {
-        setsShowDesc(!showDesc);
+    const table = {
+        1: "styczeń",
+        2: "luty"
     }
 
     const editHandler = () => {
@@ -18,10 +19,9 @@ function Note(props) {
 
     return (
         <div className="note">
-            <p onClick={toggleDesc}>{props.title}</p>
-            {showDesc && (
-                <div className="description">{props.body}</div>
-            )}
+            <p>{arr[0]} {table[arr[1]]} {arr[2]}</p>
+            <p className="title">{props.title}</p>
+            <div className="description">{props.body}</div>
             <button onClick={editHandler}>edytuj</button>
             <button
             className="delete"

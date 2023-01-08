@@ -1,0 +1,32 @@
+.new-note-btn{
+    width: 180px;
+    height: 55px;
+    border-radius: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: larger;
+    transition: 1s;
+    margin-bottom: 10px;
+    
+    background: white;
+}
+
+.new-note-btn:hover{
+    scale: 1.2;
+    background: repeating-linear-gradient(
+    45deg,
+      rgba(255, 0, 0, 0.45),
+      rgba(255, 0, 0, 0.45) 5%,
+      rgba(255, 165, 0, 0.45) 5%,
+      rgba(255, 165, 0, 0.45) 10%,
+      rgba(255, 255, 0, 0.45) 10%,
+      rgba(255, 255, 0, 0.45) 15%,
+      rgba(0, 128, 0, 0.45) 15%,
+      rgba(0, 128, 0, 0.45) 20%,
+      rgba(0, 0, 255, 0.45) 20%,
+      rgba(0, 0, 255, 0.45) 25%,
+      rgba(75, 0, 130, 0.45) 25%,
+      rgba(75, 0, 130, 0.45) 30%,
+      rgba(143, 0, 255, 0.45) 30%
+    );
+    color: white;
+}

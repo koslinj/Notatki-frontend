@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './NewNote.css'
 
 function NewNote(props) {
 
@@ -15,9 +16,13 @@ function NewNote(props) {
     setDesc(value);
   }
   const addNote = () => {
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
     const note = {
         title: title,
-        body: desc
+        body: desc,
+        when: date
     }
     props.onAdd(note);
 
@@ -38,7 +43,7 @@ function NewNote(props) {
         <button onClick={() => addNote()}>Dodaj notatkę</button>
     </div>
   ) : (
-    <button onClick={() => setShowForm(true)}>Nowa notatka</button>
+    <button className='new-note-btn' onClick={() => setShowForm(true)}>Nowa notatka</button>
   )
   )
 }

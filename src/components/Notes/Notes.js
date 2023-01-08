@@ -27,7 +27,6 @@ class Notes extends React.Component {
         const res = await axios.get('/notes');
         const notes = res.data;
         this.setState({notes: notes})
-        console.log(res)
     }
 
     async deleteNote(id) {
@@ -43,7 +42,7 @@ class Notes extends React.Component {
         try{
             const res = await axios.post('/notes', note);
             const newNote = res.data;
-            console.log(res,newNote,note);
+            console.log(note);
 
             notes.push(newNote);
             this.setState({notes: notes})
@@ -81,13 +80,14 @@ class Notes extends React.Component {
         return (
             <div>
                 <NotificationContainer/>
-                <p>Moje notatki:</p>
+                <h1>Notatki:</h1>
 
                 <NewNote
                     onAdd={(note) => this.addNote(note)} />
 
                 <Modal
                     isOpen={this.state.showEditModal}
+                    appElement={document.getElementById('root')}
                     contentLabel="Edytuj notatkę" >
                         <EditNote
                         title={this.state.editNote.title}
@@ -96,16 +96,19 @@ class Notes extends React.Component {
                         onEdit={(note) => this.editNote(note)} />
                         <button onClick={() => this.toggleModal()}>Anuluj</button>
                 </Modal>
-
-                {this.state.notes.map(note => (
+                <div className="notes-container">
+                    {this.state.notes.map(note => (
                     <Note
                         key={note._id}
                         title={note.title}
                         body={note.body}
                         id={note._id}
+                        when={note.when}
                         onEdit={(note) => this.editNoteHandler(note)}
                         onDelete={(id) => this.deleteNote(id)} />
-                ))}
+                    ))}
+                </div>
+                
 
             </div>
         )
